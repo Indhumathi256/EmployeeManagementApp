@@ -1,0 +1,30 @@
+﻿@model IEnumerable<EmployeeManagementApp.Models.Employee>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Employee ID</th>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Department</th>
+            <th>Date of Hire</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var employee in Model)
+        {
+            <tr>
+                <td>@employee.EmployeeID</td>
+                <td>@employee.FirstName @employee.LastName</td>
+                <td>@employee.Position</td>
+                <td>@employee.Department</td>
+                <td>@employee.DateOfHire.ToShortDateString()</td>
+                <td>
+                    <a href="@Url.Action("Edit", "Employee", new { id = employee.EmployeeID })">Edit</a> |
+                    <a href="@Url.Action("Delete", "Employee", new { id = employee.EmployeeID })">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
